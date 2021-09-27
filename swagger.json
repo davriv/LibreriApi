@@ -444,8 +444,10 @@
           "schema": {
             "$ref": "#/definitions/Usuario"
           }
-        }]
-      },
+        }
+      ]
+    }
+    },
 
       "/comentarios": {
         "post": {
@@ -1041,5 +1043,5 @@
         }
       }
     }
-  }
+  
 }
