@@ -446,6 +446,126 @@
           }
         }]
       },
+
+      "/comentarios": {
+        "post": {
+          "tags": ["Comentarios"],
+          "summary": "Crear nuevo comentario.",
+          "operationId": "postComentario",
+          "responses": {
+            "200": {
+              "description": "Comentario realizado"
+            }
+          },
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Objeto de Comentario para crearlo.",
+              "schema": {
+                "$ref": "#/definitions/Comentario"
+              }
+            }
+          ]
+        },
+        "get": {
+          "tags": ["Comentario"],
+          "summary": "Obtener todos los comentarios",
+          "operationId": "getComentario",
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Objetos de todos los comentarios",
+              "schema": {
+                "$ref": "#/definitions/Comentario"
+              }
+            }
+          }
+        }
+      },
+      "/comentarios/{id}": {
+        "get": {
+          "tags": ["Comentarios"],
+          "summary": "Obtener comentario por ID",
+          "operationId": "getComentario",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "type": "string",
+              "description": "ID a buscar"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Objeto del comentario por su ID",
+              "schema": {
+                "$ref": "#/definitions/Comentario"
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": ["Comentarios"],
+          "summary": "Actualizar",
+          "operationId": "putComentario",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "type": "string",
+              "description": "ID del comentario"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Actualizacion del comentario",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Comentario"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "El comentario ha sido modificado",
+              "schema": {
+                "$ref": "#/definitions/Comentario"
+              }
+            },
+            "404": {
+              "description": "El comentario no existe"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Comentarios"],
+          "summary": "Eliminar comentario por su ID",
+          "operationId": "deleteComentario",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "type": "string",
+              "description": "ID del comentario"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "El comentario fue eliminado"
+            }
+          }
+        }
+      },
+
       "components": {
         "schemas": {
           "Libro": {
