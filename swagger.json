@@ -13,11 +13,14 @@
     },
     "version": "1.0.0"
   },
-  "servers": [{
-    "url": "https://libreriapi.herokuapp.com/v1",
-    "description": "Heroku APP"
-  }],
-  "tags": [{
+  "servers": [
+    {
+      "url": "http://localhost:4001/v1",
+      "description": "servidor local"
+    }
+  ],
+  "tags": [
+    {
       "name": "Libros",
       "description": "Endpoint que maneja toda la información referente a los libros."
     },
@@ -47,14 +50,16 @@
         },
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [{
-          "in": "body",
-          "name": "body",
-          "description": "Objeto de Autor para crearlo.",
-          "schema": {
-            "$ref": "#/definitions/Autor"
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto de Autor para crearlo.",
+            "schema": {
+              "$ref": "#/definitions/Autor"
+            }
           }
-        }]
+        ]
       },
       "get": {
         "tags": ["Autores"],
@@ -77,13 +82,15 @@
         "summary": "Obtener autor por ID",
         "operationId": "getAutores",
         "produces": ["application/json"],
-        "parameters": [{
-          "in": "path",
-          "name": "id",
-          "required": true,
-          "type": "string",
-          "description": "ID a buscar"
-        }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "ID a buscar"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Objeto del autor por su ID",
@@ -99,7 +106,8 @@
         "operationId": "modificarUsuario",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [{
+        "parameters": [
+          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -132,13 +140,15 @@
         "tags": ["Autores"],
         "summary": "Eliminar autor por su ID",
         "operationId": "deleteAutor",
-        "parameters": [{
-          "in": "path",
-          "name": "id",
-          "required": true,
-          "type": "string",
-          "description": "ID del autor"
-        }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "ID del autor"
+          }
+        ],
         "responses": {
           "200": {
             "description": "El autor fue eliminado"
@@ -221,17 +231,19 @@
         "tags": ["Libros"],
         "summary": "Búsqueda de un único libro",
         "description": "Regresa el libro que coincida con el ID",
-        "parameters": [{
-          "name": "idLibro",
-          "in": "path",
-          "description": "Id del libro",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
+        "parameters": [
+          {
+            "name": "idLibro",
+            "in": "path",
+            "description": "Id del libro",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "Solicitud exitosa",
@@ -261,17 +273,19 @@
         "tags": ["Libros"],
         "summary": "Actualiza un libro",
         "description": "Busca un libro por su ID y actualiza los datos enviados en el body.",
-        "parameters": [{
-          "name": "idLibro",
-          "in": "path",
-          "description": "Id del libro",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
+        "parameters": [
+          {
+            "name": "idLibro",
+            "in": "path",
+            "description": "Id del libro",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
           }
-        }],
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -310,17 +324,19 @@
         "tags": ["Libros"],
         "summary": "Elimina un libro de la BD.",
         "description": "Busca un libro por su ID y lo elimina de la base de datos.",
-        "parameters": [{
-          "name": "idLibro",
-          "in": "path",
-          "description": "Id del libro",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
+        "parameters": [
+          {
+            "name": "idLibro",
+            "in": "path",
+            "description": "Id del libro",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "Libro eliminado exitosamente"
@@ -345,17 +361,19 @@
         "tags": ["Libros"],
         "summary": "Búsqueda de libros según la frase ingresada",
         "description": "Regresa el (los) libro (s) que coincidan en el título con la palabra o frase ingresada",
-        "parameters": [{
-          "name": "frase",
-          "in": "path",
-          "description": "Palabra(s) o título completo",
-          "required": true,
-          "style": "simple",
-          "explode": false,
-          "schema": {
-            "type": "string"
+        "parameters": [
+          {
+            "name": "frase",
+            "in": "path",
+            "description": "Palabra(s) o título completo",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "Solicitud exitosa",
@@ -387,17 +405,19 @@
         "tags": ["Libros"],
         "summary": "Muestra lista descendente de libros más comentados.",
         "description": "Regresa un listado ordenado de mayor a menor con los libros más comentados, desde un libro hasta n cantidad, según se envíe en \"?cantidad=n\"",
-        "parameters": [{
-          "name": "cantidad",
-          "in": "query",
-          "description": "Cantidad de libros a mostrar de los más comentados",
-          "required": true,
-          "style": "form",
-          "explode": true,
-          "schema": {
-            "type": "integer"
+        "parameters": [
+          {
+            "name": "cantidad",
+            "in": "query",
+            "description": "Cantidad de libros a mostrar de los más comentados",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "Solicitud exitosa",
@@ -424,7 +444,6 @@
         }
       }
     },
-
     "/usuarios": {
       "post": {
         "tags": ["Usuarios"],
@@ -566,482 +585,481 @@
             }
           }
         }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Libro": {
+        "required": ["idAuthors", "isbn", "title"],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "idAuthors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Libro_idAuthors"
+            }
+          },
+          "isbn": {
+            "type": "string"
+          },
+          "isbn13": {
+            "type": "string"
+          },
+          "publication_year": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "small_image_url": {
+            "type": "string"
+          }
+        }
       },
-
-      "components": {
-        "schemas": {
-          "Libro": {
-            "required": ["idAuthors", "isbn", "title"],
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "readOnly": true
-              },
-              "title": {
-                "type": "string"
-              },
-              "idAuthors": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Libro_idAuthors"
-                }
-              },
-              "isbn": {
-                "type": "string"
-              },
-              "isbn13": {
-                "type": "string"
-              },
-              "publication_year": {
-                "type": "string"
-              },
-              "language": {
-                "type": "string"
-              },
-              "publisher": {
-                "type": "string"
-              },
-              "pages": {
-                "type": "integer"
-              },
-              "price": {
-                "type": "integer"
-              },
-              "image_url": {
-                "type": "string"
-              },
-              "small_image_url": {
-                "type": "string"
-              }
-            }
+      "BodyLibrosPost": {
+        "required": ["idAuthors", "isbn", "title"],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Aprendiendo NodeJS en BEDU"
           },
-          "BodyLibrosPost": {
-            "required": ["idAuthors", "isbn", "title"],
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string",
-                "example": "Aprendiendo NodeJS en BEDU"
-              },
-              "idAuthors": {
-                "type": "array",
-                "items": {
-                  "example": "613d5cf346ed939f5bfe3d7d, 613d5cf346ed939f5bfe3d7d"
-                }
-              },
-              "isbn": {
-                "type": "string",
-                "example": "307397674"
-              }
-            }
-          },
-          "ExitoIngresoLibro": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "613d8a2546ed939f5bfe3e2f"
-              },
-              "title": {
-                "type": "string",
-                "example": "Aprendiendo NodeJS en BEDU"
-              },
-              "idAuthors": {
-                "type": "array",
-                "items": {
-                  "example": "613d5cf346ed939f5bfe3d7d, 613d5cf346ed939f5bfe3d7d"
-                }
-              },
-              "isbn": {
-                "type": "string",
-                "example": "307397674"
-              },
-              "isbn13": {
-                "type": "string"
-              },
-              "publication_year": {
-                "type": "string"
-              },
-              "language": {
-                "type": "string"
-              },
-              "publisher": {
-                "type": "string"
-              },
-              "pages": {
-                "type": "integer"
-              },
-              "price": {
-                "type": "integer"
-              },
-              "image_url": {
-                "type": "string"
-              },
-              "small_image_url": {
-                "type": "string"
-              }
-            }
-          },
-          "GetLibrosAll": {
+          "idAuthors": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/GetLibrosAll_inner"
+              "example": "613d5cf346ed939f5bfe3d7d, 613d5cf346ed939f5bfe3d7d"
             }
           },
-          "BodyLibrosPut": {
-            "type": "object",
-            "properties": {
-              "isbn13": {
-                "type": "string",
-                "example": "9780307277670"
-              },
-              "publication_year": {
-                "type": "string",
-                "example": "2003"
-              },
-              "language": {
-                "type": "string",
-                "example": "eng"
-              },
-              "publisher": {
-                "type": "string",
-                "example": "Arcade Publishing"
-              },
-              "pages": {
-                "type": "integer",
-                "example": 1078
-              },
-              "price": {
-                "type": "integer",
-                "example": 10
-              },
-              "image_url": {
-                "type": "string",
-                "example": "https://images.gr-assets.com/books/1303252999m/968.jpg"
-              },
-              "small_image_url": {
-                "type": "string",
-                "example": "https://images.gr-assets.com/books/1303252999s/968.jpg"
-              }
-            }
+          "isbn": {
+            "type": "string",
+            "example": "307397674"
+          }
+        }
+      },
+      "ExitoIngresoLibro": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "613d8a2546ed939f5bfe3e2f"
           },
-          "ExitoLibrosPut": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "613d8a2546ed939f5bfe3e2f"
-              },
-              "title": {
-                "type": "string",
-                "example": "Aprendiendo NodeJS en BEDU"
-              },
-              "idAuthors": {
-                "type": "array",
-                "items": {
-                  "example": "613d5cf346ed939f5bfe3d7d, 613d5cf346ed939f5bfe3d7d"
-                }
-              },
-              "isbn": {
-                "type": "string",
-                "example": "307397674"
-              },
-              "isbn13": {
-                "type": "string",
-                "example": "9780307277670"
-              },
-              "publication_year": {
-                "type": "string",
-                "example": "2003"
-              },
-              "language": {
-                "type": "string",
-                "example": "eng"
-              },
-              "publisher": {
-                "type": "string",
-                "example": "Arcade Publishing"
-              },
-              "pages": {
-                "type": "integer",
-                "example": 1078
-              },
-              "price": {
-                "type": "integer",
-                "example": 10
-              },
-              "image_url": {
-                "type": "string",
-                "example": "https://images.gr-assets.com/books/1303252999m/968.jpg"
-              },
-              "small_image_url": {
-                "type": "string",
-                "example": "https://images.gr-assets.com/books/1303252999s/968.jpg"
-              }
-            }
+          "title": {
+            "type": "string",
+            "example": "Aprendiendo NodeJS en BEDU"
           },
-          "GetMoreCommentsBooks": {
+          "idAuthors": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/GetMoreCommentsBooks_inner"
+              "example": "613d5cf346ed939f5bfe3d7d, 613d5cf346ed939f5bfe3d7d"
             }
           },
-          "Libro_idAuthors": {
-            "properties": {
-              "author_1": {
-                "type": "string"
-              },
-              "author_n": {
-                "type": "string"
-              }
-            }
+          "isbn": {
+            "type": "string",
+            "example": "307397674"
           },
-          "GetLibrosAll_inner": {
-            "properties": {
-              "_id": {
-                "type": "string",
-                "example": "613d8a2546ed939f5bfe3e42"
-              },
-              "title": {
-                "type": "string",
-                "example": "The Da Vinci Code"
-              },
-              "isbn": {
-                "type": "string",
-                "example": "307277674"
-              },
-              "isbn13": {
-                "type": "string",
-                "example": "9780307277670"
-              },
-              "publication_year": {
-                "type": "string",
-                "example": "2003"
-              },
-              "language": {
-                "type": "string",
-                "example": "eng"
-              },
-              "publisher": {
-                "type": "string",
-                "example": "Arcade Publishing"
-              },
-              "pages": {
-                "type": "integer",
-                "example": 1078
-              },
-              "price": {
-                "type": "integer",
-                "example": 10
-              },
-              "image_url": {
-                "type": "string",
-                "example": "https://images.gr-assets.com/books/1303252999m/968.jpg"
-              },
-              "small_image_url": {
-                "type": "string",
-                "example": "https://images.gr-assets.com/books/1303252999s/968.jpg"
-              },
-              "Autores": {
-                "type": "object",
-                "properties": {
-                  "_idAuthor": {
-                    "type": "string",
-                    "example": "613d5cf346ed939f5bfe3d7d"
-                  },
-                  "nombre_completo": {
-                    "type": "string",
-                    "example": "Dan Brown"
-                  }
-                }
-              }
-            }
+          "isbn13": {
+            "type": "string"
           },
-          "GetMoreCommentsBooks_inner": {
-            "properties": {
-              "title": {
-                "type": "string",
-                "example": "The Da Vinci Code"
-              },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "properties": {
-                    "nombre": {
-                      "type": "string",
-                      "example": "Louis"
-                    },
-                    "texto": {
-                      "type": "string",
-                      "example": "Fascinante, te atrapa desde la primer página. El profesor Langdon es el héroe menos esperado."
-                    },
-                    "fecha": {
-                      "type": "string",
-                      "example": "2003-11-24T06:00:00.000Z"
-                    }
-                  }
-                }
-              },
-              "TotalComments": {
-                "type": "integer",
-                "example": 1
-              }
-            }
+          "publication_year": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "small_image_url": {
+            "type": "string"
           }
-        },
-        "responses": {
-          "Unauthorized": {
-            "description": "(Unauthorized) No hay autorización para llamar el servicio"
+        }
+      },
+      "GetLibrosAll": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GetLibrosAll_inner"
+        }
+      },
+      "BodyLibrosPut": {
+        "type": "object",
+        "properties": {
+          "isbn13": {
+            "type": "string",
+            "example": "9780307277670"
           },
-          "NotFound": {
-            "description": "(NotFound) No se encontró información"
+          "publication_year": {
+            "type": "string",
+            "example": "2003"
           },
-          "BadRequest": {
-            "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+          "language": {
+            "type": "string",
+            "example": "eng"
           },
-          "ServerError": {
-            "description": "(ServerError) Error en el servidor"
+          "publisher": {
+            "type": "string",
+            "example": "Arcade Publishing"
+          },
+          "pages": {
+            "type": "integer",
+            "example": 1078
+          },
+          "price": {
+            "type": "integer",
+            "example": 10
+          },
+          "image_url": {
+            "type": "string",
+            "example": "https://images.gr-assets.com/books/1303252999m/968.jpg"
+          },
+          "small_image_url": {
+            "type": "string",
+            "example": "https://images.gr-assets.com/books/1303252999s/968.jpg"
           }
-        },
-        "parameters": {
-          "token": {
-            "name": "token",
-            "in": "header",
-            "description": "Token de autenticación.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
+        }
+      },
+      "ExitoLibrosPut": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "613d8a2546ed939f5bfe3e2f"
+          },
+          "title": {
+            "type": "string",
+            "example": "Aprendiendo NodeJS en BEDU"
+          },
+          "idAuthors": {
+            "type": "array",
+            "items": {
+              "example": "613d5cf346ed939f5bfe3d7d, 613d5cf346ed939f5bfe3d7d"
             }
           },
-          "idLibro": {
-            "name": "idLibro",
-            "in": "path",
-            "description": "Id del libro",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
+          "isbn": {
+            "type": "string",
+            "example": "307397674"
+          },
+          "isbn13": {
+            "type": "string",
+            "example": "9780307277670"
+          },
+          "publication_year": {
+            "type": "string",
+            "example": "2003"
+          },
+          "language": {
+            "type": "string",
+            "example": "eng"
+          },
+          "publisher": {
+            "type": "string",
+            "example": "Arcade Publishing"
+          },
+          "pages": {
+            "type": "integer",
+            "example": 1078
+          },
+          "price": {
+            "type": "integer",
+            "example": 10
+          },
+          "image_url": {
+            "type": "string",
+            "example": "https://images.gr-assets.com/books/1303252999m/968.jpg"
+          },
+          "small_image_url": {
+            "type": "string",
+            "example": "https://images.gr-assets.com/books/1303252999s/968.jpg"
+          }
+        }
+      },
+      "GetMoreCommentsBooks": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GetMoreCommentsBooks_inner"
+        }
+      },
+      "Libro_idAuthors": {
+        "properties": {
+          "author_1": {
+            "type": "string"
+          },
+          "author_n": {
+            "type": "string"
+          }
+        }
+      },
+      "GetLibrosAll_inner": {
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "613d8a2546ed939f5bfe3e42"
+          },
+          "title": {
+            "type": "string",
+            "example": "The Da Vinci Code"
+          },
+          "isbn": {
+            "type": "string",
+            "example": "307277674"
+          },
+          "isbn13": {
+            "type": "string",
+            "example": "9780307277670"
+          },
+          "publication_year": {
+            "type": "string",
+            "example": "2003"
+          },
+          "language": {
+            "type": "string",
+            "example": "eng"
+          },
+          "publisher": {
+            "type": "string",
+            "example": "Arcade Publishing"
+          },
+          "pages": {
+            "type": "integer",
+            "example": 1078
+          },
+          "price": {
+            "type": "integer",
+            "example": 10
+          },
+          "image_url": {
+            "type": "string",
+            "example": "https://images.gr-assets.com/books/1303252999m/968.jpg"
+          },
+          "small_image_url": {
+            "type": "string",
+            "example": "https://images.gr-assets.com/books/1303252999s/968.jpg"
+          },
+          "Autores": {
+            "type": "object",
+            "properties": {
+              "_idAuthor": {
+                "type": "string",
+                "example": "613d5cf346ed939f5bfe3d7d"
+              },
+              "nombre_completo": {
+                "type": "string",
+                "example": "Dan Brown"
+              }
             }
           }
         }
       },
-      "definitions": {
-        "Autor": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "idBooks": {
-              "type": "array",
-              "items": {
-                "type": "string"
+      "GetMoreCommentsBooks_inner": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "The Da Vinci Code"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "nombre": {
+                  "type": "string",
+                  "example": "Louis"
+                },
+                "texto": {
+                  "type": "string",
+                  "example": "Fascinante, te atrapa desde la primer página. El profesor Langdon es el héroe menos esperado."
+                },
+                "fecha": {
+                  "type": "string",
+                  "example": "2003-11-24T06:00:00.000Z"
+                }
               }
             }
-          }
-        },
-        "Libro": {
-          "type": "object",
-          "required": ["title", "idAuthors", "isbn"],
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "title": {
-              "type": "string"
-            },
-            "idAuthors": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "isbn": {
-              "type": "string"
-            },
-            "isbn13": {
-              "type": "string"
-            },
-            "publication_year": {
-              "type": "string"
-            },
-            "language": {
-              "type": "string"
-            },
-            "publisher": {
-              "type": "string"
-            },
-            "pages": {
-              "type": "integer"
-            },
-            "price": {
-              "type": "number"
-            },
-            "image_url": {
-              "type": "string"
-            },
-            "small_image_url": {
-              "type": "string"
-            }
-          }
-        },
-        "Usuario": {
-          "type": "object",
-          "required": ["username", "email", "nombre", "apellido"],
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "username": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "nombre": {
-              "type": "string"
-            },
-            "apellido": {
-              "type": "string"
-            },
-            "tipo": {
-              "type": "string",
-              "enum": ["admin", "cliente"]
-            }
-          }
-        },
-        "Comentario": {
-          "type": "object",
-          "required": ["nombre", "email", "texto"],
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "nombre": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "libro_id": {
-              "type": "string"
-            },
-            "texto": {
-              "type": "string"
-            },
-            "fecha": {
-              "type": "string"
-            }
+          },
+          "TotalComments": {
+            "type": "integer",
+            "example": 1
           }
         }
       }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "(Unauthorized) No hay autorización para llamar el servicio"
+      },
+      "NotFound": {
+        "description": "(NotFound) No se encontró información"
+      },
+      "BadRequest": {
+        "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+      },
+      "ServerError": {
+        "description": "(ServerError) Error en el servidor"
+      }
+    },
+    "parameters": {
+      "token": {
+        "name": "token",
+        "in": "header",
+        "description": "Token de autenticación.",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "idLibro": {
+        "name": "idLibro",
+        "in": "path",
+        "description": "Id del libro",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      }
     }
-  
+  },
+  "definitions": {
+    "Autor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "idBooks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Libro": {
+      "type": "object",
+      "required": ["title", "idAuthors", "isbn"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "idAuthors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isbn": {
+          "type": "string"
+        },
+        "isbn13": {
+          "type": "string"
+        },
+        "publication_year": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "number"
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "small_image_url": {
+          "type": "string"
+        }
+      }
+    },
+    "Usuario": {
+      "type": "object",
+      "required": ["username", "email", "nombre", "apellido"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "apellido": {
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string",
+          "enum": ["admin", "cliente"]
+        }
+      }
+    },
+    "Comentario": {
+      "type": "object",
+      "required": ["nombre", "email", "texto"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "libro_id": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string"
+        },
+        "fecha": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }
+  
