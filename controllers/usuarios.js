@@ -17,7 +17,7 @@ function crearUsuario(req, res, next) {
 }
 
 function obtenerUsuarios(req, res, next) {
-  Usuario.findById(req.body.usuario.id, (err, user) => {
+  Usuario.findById(req.usuario.id, (err, user) => {
     if (!user || err) {
       return res.sendStatus(401);
     }
