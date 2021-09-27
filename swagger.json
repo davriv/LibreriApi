@@ -468,7 +468,7 @@
           ]
         },
         "get": {
-          "tags": ["Comentario"],
+          "tags": ["Comentarios"],
           "summary": "Obtener todos los comentarios",
           "operationId": "getComentario",
           "produces": ["application/json"],
