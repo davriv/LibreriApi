@@ -26,11 +26,7 @@ const UsuarioSchema = new mongoose.Schema(
       match: [/\S+@\S+\.\S+/, "es inválido"],
       index: true,
     },
-    password: {
-      type: String,
-      required: [true, "Password no puede ir vacío"],
-      index: true,
-    },
+
     tipo: { type: String, enum: ["admin", "cliente"] },
     hash: String,
     salt: String,
@@ -83,6 +79,7 @@ UsuarioSchema.methods.publicData = function(){
     email: this.email,
     nombre: this.nombre,
     apellido: this.apellido,
+    tipo:this.tipo
   };
 }
 mongoose.model("Usuario", UsuarioSchema);
