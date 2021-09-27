@@ -22,8 +22,9 @@ function obtenerUsuarios(req, res, next) {
       return res.sendStatus(401);
     }
     return res.send(user.publicData());
-  }).catch((err) => res.send(err));
+  }).catch(next);
 }
+
 
 function modificarUsuario(req, res, next) {
 
